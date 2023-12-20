@@ -1,0 +1,142 @@
+body {
+    background: #000000;
+    font-family: 'Knewave', cursive;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #eeeeee;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+}
+
+h4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: #fdca66;
+    margin-top: 50px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+label {
+    display: flex;
+    align-items: center;
+}
+
+input {
+    height: 50px;
+    border-radius: 25px;
+    font-size: 25px;
+    box-shadow: #91bce3 0px 3px 8px;
+    outline: none;
+    margin-right: 10px; /* Add some spacing between input and button */
+    width: 100%; /* Make input full width */
+}
+
+button {
+    background: #5E5DF0;
+    border-radius: 999px;
+    box-shadow: #5E5DF0 0 10px 20px -10px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    padding: 8px 18px;
+    border: 0;
+}
+
+#videos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: calc(100vh - 15px); /* Adjusted based on the header and h4 height */
+    overflow: hidden; /* Hide overflow if videos exceed the max height */
+}
+
+#video1, #video2 {
+    width: 100%; /* Make videos full width */
+    height: auto;
+}
+
+video {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+#fireworks {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+@keyframes fireworksAnimation {
+    0% {
+        transform: scale(1);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+.fireworks {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #bb9912; /* Fireworks color */
+    border-radius: 50%;
+    animation: fireworksAnimation 1s ease-in-out infinite;
+}
+
+/* Media Query for smaller screens */
+@media only screen and (max-width: 600px) {
+    h1 {
+        margin: 10px 30px;
+        font-size: 60px;
+    }
+    
+    h4 {
+        font-size: 30px;
+        margin-top: 30px;
+    }
+
+    input, button {
+        font-size: 18px;
+    }
+
+    #video1, #video2 {
+        height: 150px;
+    }
+
+    .fireworks {
+        width: 10px;
+        height: 10px;
+    }
+}

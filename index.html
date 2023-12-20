@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Add styles for fireworks animation */
+        #fireworks {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .firework {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ffcc00; /* Fireworks color */
+            border-radius: 50%;
+            animation: fireworksAnimation 1s ease-in-out infinite;
+        }
+
+        @keyframes fireworksAnimation {
+            0% {
+                transform: scale(1);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Thala For A Reason?</h1>
+    <div class="search">
+        <label>
+            <input type="text" id="textInput" required>
+            <button class="button-34" onclick="checkConditions()">Check</button>
+        </label>
+    </div>
+
+    <!-- Add an element for the videos -->
+    <div id="videos">
+        <video id="video1" style="display: none;" controls autoplay>
+            <!-- Add video source -->
+            <source src="boleJoKoyal.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <h4>Naughty ho rha</h4>
+        <video id="video2" style="display: none;" controls autoplay>
+            <!-- Add video source -->
+            <source src="aukatDikhaDi.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Add an element for the fireworks animation -->
+    <div id="fireworks"></div>
+
+    <script>
+        function checkConditions() {
+            // Get the input value
+            var inputValue = document.getElementById("textInput").value;
+
+            // Check conditions
+            if (inputValue === '7' || inputValue.length === 7 || getSumOfDigits(inputValue) === 7) {
+                // Play MP4 videos
+                document.getElementById("video1").style.display = "block";
+                document.getElementById("video2").style.display = "none";
+                document.getElementById("video1").play();
+                document.getElementById("video2").pause();
+
+                // Show fireworks animation
+                document.getElementById("fireworks").style.display = "block";
+                createFireworks();
+            } else {
+                // Play other MP4 video
+                document.getElementById("video1").pause();
+                document.getElementById("video2").play();
+                document.getElementById("video1").style.display = "none";
+                document.getElementById("video2").style.display = "block";
+
+                // Hide fireworks animation
+                document.getElementById("fireworks").style.display = "none";
+                clearFireworks();
+            }
+        }
+
+        // Function to calculate the sum of digits in a number
+        function getSumOfDigits(number) {
+            return number.toString().split('').reduce(function (acc, digit) {
+                return acc + parseInt(digit);
+            }, 0);
+        }
+
+        // Function to create fireworks
+        function createFireworks() {
+            var fireworksContainer = document.getElementById("fireworks");
+
+            for (var i = 0; i < 5; i++) {
+                var firework = document.createElement("div");
+                firework.className = "firework";
+                firework.style.left = Math.random() * 100 + "vw";
+                firework.style.top = Math.random() * 100 + "vh";
+                fireworksContainer.appendChild(firework);
+            }
+        }
+
+        // Function to clear fireworks
+        function clearFireworks() {
+            var fireworksContainer = document.getElementById("fireworks");
+            fireworksContainer.innerHTML = "";
+        }
+    </script>
+</body>
+
+</html>
